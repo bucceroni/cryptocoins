@@ -30,14 +30,13 @@ export default class Table extends Component {
         <tbody>
           {cryptocoins.length > 0 &&
             cryptocoins.map(item => {
-              // console.log("item: ", item); 
               return (
-                <tr key={item.rank}>
-                  <th scope="col">{item.rank}</th>
-                  <td scope="col">{item.name}</td>
-                  <td scope="col">{item.symbol}</td>
-                  <td scope="col">{item.price_brl}</td>
-                  <td scope="col">{item.price_usd}</td>
+                <tr key={item.id}>
+                  <th scope="row">{item.rank}</th>
+                  <td>{item.name}</td>
+                  <td>{item.symbol}</td>
+                  <td>{item.price_brl}</td>
+                  <td>{item.price_usd}</td>
                 </tr>
               );
             })}

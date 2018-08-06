@@ -1,11 +1,10 @@
 import React from "react";
-import logo from '../img/gama.png'
+import logo from "../img/bitcoin.png";
 
 const Header = () => {
   return (
     <div className="row justify-content-around align-items-center bg-secondary py-2 mb-5">
-      {/* <img className="bg-light rounded-circle" src={logo} /> */}
-      <img src={logo} />
+      <img style={{ width: "100px" }} alt="logo" src={logo} />
       <h1>Criptomoedas</h1>
     </div>
   );

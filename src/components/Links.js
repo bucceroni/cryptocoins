@@ -9,16 +9,16 @@ const Links = () => {
         </div>
         <ul className="list-group">
           <li className="list-group-item">
-            <a href="#">Bitcoin</a>
+            <a href="https://www.google.com.br/search?q=bitcoin">Bitcoin</a>
           </li>
           <li className="list-group-item">
-            <a href="#">Eth</a>
+            <a href="https://www.google.com.br/search?q=ethereum">Ethereum</a>
           </li>
           <li className="list-group-item">
-            <a href="#">DOGE Coin</a>
+            <a href="https://www.google.com.br/search?q=dogecoin">DOGE Coin</a>
           </li>
           <li className="list-group-item">
-            <a href="#">Cage Coin</a>
+            <a href="https://www.google.com.br/search?q=cagecoin">Cage Coin</a>
           </li>
         </ul>
       </div>
