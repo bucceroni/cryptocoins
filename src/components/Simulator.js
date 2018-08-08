@@ -1,51 +1,54 @@
 import React, { Component } from "react";
-import axios from "axios";
 
-export default class Simulator extends Component {
+import PropTypes from "prop-types";
+
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as actions from "../actions/actions";
+
+class Simulator extends Component {
   state = {
-    cryptocoins: [],
     selectCoin: "Choose",
-    inputValue: "",
-    result: ""
+    inputValue: ""
   };
 
-  async componentDidMount() {
-    const cryptocoins = await axios.get(
-      "https://api.coinmarketcap.com/v1/ticker/?convert=BRL&limit=10"
-    );
-    this.setState({ cryptocoins: cryptocoins.data });
-  }
-
   handleInputValue = event => {
+    const { actions, convertResult } = this.props;
+
     this.setState({
-      inputValue: event.target.value,
-      result: ""
+      inputValue: event.target.value
     });
+
+    if (convertResult === 0) {
+      return null;
+    } else {
+      actions.cleanConvertCryptocoins();
+    }
   };
 
   handleSelectCoin = event => {
+    const { actions, convertResult } = this.props;
+
     this.setState({
-      selectCoin: event.target.value,
-      result: ""
+      selectCoin: event.target.value
     });
+
+    if (convertResult === 0) {
+      return null;
+    } else {
+      actions.cleanConvertCryptocoins();
+    }
   };
 
   handleConvertValue = () => {
-    const { cryptocoins, inputValue, selectCoin } = this.state;
-
-    let coin = cryptocoins.filter(item => {
-      if (item.id === selectCoin) {
-        return item;
-      } else {
-      }
-    });
-
-    let result = inputValue / coin[0].price_brl;
-    this.setState({ result: result });
+    const { inputValue, selectCoin } = this.state;
+    const { actions } = this.props;
+    actions.convertCryptocoins(inputValue, selectCoin);
   };
 
   render() {
-    const { cryptocoins, inputValue, selectCoin, result } = this.state;
+    const { inputValue, selectCoin } = this.state;
+    const { cryptocoins, convertResult } = this.props;
     return (
       <div className="bg-light p-2">
         {/* title */}
@@ -98,8 +101,37 @@ export default class Simulator extends Component {
 
         {/* Result */}
         <strong>Resultado: </strong>
-        <span>{result}</span>
+        <span>{convertResult}</span>
       </div>
     );
   }
 }
+
+Simulator.propTypes = {
+  actions: PropTypes.object.isRequired,
+  cryptocoins: PropTypes.array.isRequired,
+  convertResult: PropTypes.number.isRequired
+};
+
+const mapStateToProps = state => {
+  return {
+    cryptocoins: state.reducer.cryptocoins,
+    convertResult: state.reducer.convertResult
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(
+      {
+        ...actions
+      },
+      dispatch
+    )
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Simulator);

@@ -1,12 +1,3 @@
-import axios from "axios";
-
-export async function getCryptocoins() {
-  const result = await axios.get(
-    "https://api.coinmarketcap.com/v1/ticker/?convert=BRL&limit=10"
-  );
-  return result.data;
-}
-
 // function consomeAPI() {
 //     let request = new XMLHttpRequest();
 //     request.open('GET', 'https://api.coinmarketcap.com/v1/ticker/?convert=BRL&limit=10', false);
@@ -64,3 +55,4 @@ export async function getCryptocoins() {
 //     let total = valor / resposta[0].price_brl;
 //     document.getElementById('conversor-resultado').innerText = total;
 //   }
+

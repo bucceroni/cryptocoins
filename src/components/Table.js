@@ -1,20 +1,19 @@
 import React, { Component } from "react";
-import axios from "axios";
 
-export default class Table extends Component {
-  state = {
-    cryptocoins: []
-  };
+import PropTypes from "prop-types";
 
-  async componentDidMount() {
-    const cryptocoins = await axios.get(
-      "https://api.coinmarketcap.com/v1/ticker/?convert=BRL&limit=10"
-    );
-    this.setState({ cryptocoins: cryptocoins.data });
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import * as actions from "../actions/actions";
+
+class Table extends Component {
+  componentDidMount() {
+    const { actions } = this.props;
+    actions.getCryptocoins();
   }
 
   render() {
-    const { cryptocoins } = this.state;
+    const { cryptocoins } = this.props;
 
     return (
       <table className="table">
@@ -45,3 +44,30 @@ export default class Table extends Component {
     );
   }
 }
+
+Table.propTypes = {
+  actions: PropTypes.object.isRequired,
+  cryptocoins: PropTypes.array.isRequired
+};
+
+const mapStateToProps = state => {
+  return {
+    cryptocoins: state.reducer.cryptocoins
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(
+      {
+        ...actions
+      },
+      dispatch
+    )
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Table);
