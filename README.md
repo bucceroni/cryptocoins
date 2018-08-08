@@ -78,10 +78,10 @@ npm install ...
             |---Simulator.js
             |---Table.js
         |---img
-        	  |---bitcoin.png
+            |---bitcoin.png
             |---gama.png
         |---reducers
-        	  |---Reducer.js
+            |---Reducer.js
         |---store
             |---configureStore.js
             |---rootReducer
