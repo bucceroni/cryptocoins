@@ -13,6 +13,10 @@
 - [Create-react-app](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md) - Create React apps with no build configuration.
 - [Bootstrap](https://getbootstrap.com.br/docs/4.1/getting-started/download/) - Bootstrap is an open-source JavaScript framework developed by the team at Twitter. It is a combination of HTML , CSS , and JavaScript code designed to help build user interface components.
 - [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
+- [React-redux](https://github.com/reduxjs/react-redux) - Official React bindings for Redux. Performant and flexible.
+- [Redux](https://redux.js.org/) - Redux is a predictable state container for JavaScript apps.
+- [Thunk](https://github.com/reduxjs/redux-thunk) - Redux Thunk middleware allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met.
+- [Logger](https://github.com/evgenyrodionov/redux-logger) - LogRocket is a production Redux logging tool that lets you replay problems as if they happened in your own browser.
 
 # Clone Repository
 - Clone [link](https://github.com/bucceroni/cryptocoins)
@@ -49,6 +53,10 @@ npm install ...
 
 - `npm install bootstrap`
 - `npm install axios`
+- `npm install react-redux`
+- `npm install redux`
+- `npm install redux-logger`
+- `npm install redux-thunk`
 
 ## Main files
 
@@ -165,3 +173,9 @@ export default class App extends Component {
   - delete file -> src/index.css
   - delete file -> src/App.css
   - change icon -> public/favicon.ico
+
+
+# Heroku
+
+Fire up a browser and go to:
+[https://landingpage-cryptocoins.herokuapp.com/](https://landingpage-cryptocoins.herokuapp.com/)
