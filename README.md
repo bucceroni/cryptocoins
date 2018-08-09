@@ -1,6 +1,6 @@
 # Project
 
-- Dojo - Gama Academy - React + Bootstrap + Axios(API)
+- Dojo - Gama Academy - React + Redux + Bootstrap + Axios(API)
 
 # Description
 
